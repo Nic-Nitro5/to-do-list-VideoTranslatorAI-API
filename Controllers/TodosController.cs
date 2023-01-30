@@ -59,7 +59,7 @@ namespace todo_list_api.Controllers
         }
 
         [HttpPut]
-        [Route("{id:guid}")]
+        [Route("Update/{id:guid}")]
         public async Task<IActionResult> UpdateTodo([FromRoute] Guid id, UpdateTodoRequest updateTodoRequest)
         {
             var existingTodo = await dbContext.todos.FindAsync(id);
@@ -77,7 +77,7 @@ namespace todo_list_api.Controllers
         }
 
         [HttpDelete]
-        [Route("{id:guid}")]
+        [Route("Delete/{id:guid}")]
         public async Task<IActionResult> DeleteTodo(Guid id)
         {
             var existingTodo = dbContext.todos.Find(id);
