@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 using todo_list_api.Data;
 using todo_list_api.Models.DTOs.Todo;
 using todo_list_api.Models.Entities;
@@ -17,11 +18,31 @@ namespace todo_list_api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetTodos()
+        [Route("UserTodos/{id:guid}")]
+        public async Task<IActionResult> GetUserTodos(Guid id)
         {
             var todos = await dbContext.todos.ToListAsync();
+            var todosByCreator = new List<Todo>();
 
-            return Ok(todos);
+            if (todos != null)
+            {                
+                foreach(var todo in todos)
+                {
+                    if(todo.createdBy == id)
+                    {
+                        todo.createdAt = DateTime.Parse(todo.createdAt.ToString(), null, System.Globalization.DateTimeStyles.RoundtripKind);
+
+                        todosByCreator.Add(todo);
+                    }
+                }
+
+               if(todosByCreator.Count > 0)
+                {
+                    return Ok(todosByCreator);
+                }
+            }
+
+            return Ok(todosByCreator);
         }
 
         [HttpGet]
@@ -29,7 +50,7 @@ namespace todo_list_api.Controllers
         [ActionName("GetTodoById")]
         public async Task<IActionResult> GetTodoById(Guid id)
         {
-            var todo = await dbContext.todos.FirstOrDefaultAsync(u => u.id== id);
+            var todo = await dbContext.todos.FirstOrDefaultAsync(u => u.id == id);
 
             if(todo != null){
                 return Ok(todo);
@@ -49,7 +70,7 @@ namespace todo_list_api.Controllers
                 content = addTodoRequest.content,
                 completed = addTodoRequest.completed,
                 createdBy = addTodoRequest.createdBy,
-                createdAt = addTodoRequest.createdAt,
+                createdAt = addTodoRequest.createdAt = DateTime.UtcNow,
             };
 
             await dbContext.todos.AddAsync(todo);
@@ -73,7 +94,7 @@ namespace todo_list_api.Controllers
                 return Ok(existingTodo);
             }
 
-            return NotFound();
+            return Ok(false);
         }
 
         [HttpDelete]

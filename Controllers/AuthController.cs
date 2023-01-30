@@ -26,7 +26,7 @@ namespace todo_list_api.Controllers
                 return Ok(existingUser);
             }
 
-            return NotFound();
+            return Ok(false);
         }
     }
 }
