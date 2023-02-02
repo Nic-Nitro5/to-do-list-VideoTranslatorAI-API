@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Collections.Generic;
 using todo_list_api.Data;
 using todo_list_api.Models.DTOs.User;
 using todo_list_api.Models.Entities;
@@ -19,7 +21,15 @@ namespace todo_list_api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
-            var users = await dbContext.users.ToListAsync();
+            var users = await dbContext.users.Select(u => new
+                {
+                    id = u.id, 
+                    name = u.name, 
+                    email = u.email, 
+                    isAdmin = u.admin, 
+                    createdAt = u.createdAt 
+                }
+            ).ToListAsync();
 
             return Ok(users);
         }

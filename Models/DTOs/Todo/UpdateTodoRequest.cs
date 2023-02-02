@@ -3,5 +3,6 @@
     public class UpdateTodoRequest
     {
         public bool completed { get; set; } = false;
+        public bool translated { get; set; } = false;
     }
 }

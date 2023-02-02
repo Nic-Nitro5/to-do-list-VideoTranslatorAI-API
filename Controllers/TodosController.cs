@@ -87,7 +87,15 @@ namespace todo_list_api.Controllers
 
             if (existingTodo != null)
             {
-                existingTodo.completed = true;
+                if(updateTodoRequest.completed == true)
+                {
+                    existingTodo.completed = true;
+                }
+
+                if(updateTodoRequest.translated == true)
+                {
+                    existingTodo.translated = true;
+                }
 
                 await dbContext.SaveChangesAsync();
 
