@@ -5,7 +5,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["todo-list-api.csproj", "todo-list-api/"]
+COPY ["todo-list-api.csproj", "."]
 RUN dotnet restore "./todo-list-api.csproj"
 COPY . .
 WORKDIR "/src/."
