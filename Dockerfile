@@ -9,10 +9,10 @@ COPY ["todo-list-api.csproj", "."]
 RUN dotnet restore "./todo-list-api.csproj"
 COPY . .
 WORKDIR "/src"
-RUN dotnet build "/todo-list-api.proj"
+RUN dotnet build "./todo-list-api.proj"
 
 FROM build AS publish
-RUN dotnet publish "/todo-list-api.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./todo-list-api.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
