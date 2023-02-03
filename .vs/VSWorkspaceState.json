@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Models",
+    "\\Models\\DTOs",
+    "\\Models\\DTOs\\Todo"
+  ],
+  "SelectedNode": "\\Models\\DTOs\\Todo\\UpdateTodoRequest.cs",
+  "PreviewInSolutionExplorer": false
+}
