@@ -12,7 +12,7 @@ WORKDIR "/src/."
 RUN dotnet build "/todo-list-api.proj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "todo-list-api.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "/todo-list-api.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
