@@ -24,7 +24,7 @@ steps:
     - '--region'
     - $_DEPLOY_REGION
    entrypoint: gcloud
-   id: 'Deploy'
+   id: Deploy
 timeout: 1200s
 images:
  - '$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME:$COMMIT_SHA'
