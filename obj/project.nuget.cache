@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dTPU5q6M3cxQYHRdmzzLWeDp5PR00cMvCm2EcaCzIJUIURHDe0eVL68iZkO8y34MYZEN/hRPLIo1+iHqgAvXCQ==",
+  "dgSpecHash": "G/Q8L6nOOC62ATtUAD5Dk5hmuaxLtG1vnCpmwdvtmeW/EpvZ4wqUE4+H6ozKaFoA4bdJeG/ZBTPJQy6RCrXCDA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\NicolasMantzivis\\angular\\to-do-list-VideoTranslatorAI-API\\todo-list-api.csproj",
+  "projectFilePath": "C:\\Users\\NicolasMantzivis\\angular\\todo-list-api\\todo-list-api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\NicolasMantzivis\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\NicolasMantzivis\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.2\\microsoft.entityframeworkcore.7.0.2.nupkg.sha512",
